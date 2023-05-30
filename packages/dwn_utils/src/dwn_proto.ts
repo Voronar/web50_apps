@@ -52,19 +52,3 @@ export async function makeProtoCreateRecord(web5: Web5, data: DwnProtoMessage, r
 
   return res;
 }
-
-export async function makeProtoUpdateRecord(web5: Web5, recordId: string, data: DwnProtoMessage, recipient: string) {
-  const res = await web5.dwn.records.create({
-    data,
-    message: {
-      recordId,
-      recipient,
-      schema: DWN_PROTO_MESSAGE_SCHEMA,
-      dataFormat: DWN_PROTO_MESSAGE_DATA_FORMAT,
-      protocol: DWN_PROTO_NAME,
-      protocolPath: DWN_PROTO_PATH_MESSAGE,
-    },
-  });
-
-  return res;
-}

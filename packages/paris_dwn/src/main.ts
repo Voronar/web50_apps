@@ -1,4 +1,4 @@
-import { DWN_PROTO, DWN_PROTO_NAME, DwnProtoMessage, LocalDwnEndpoints, makeProtoCreateRecord, makeProtoUpdateRecord } from "@web50/dwn_utils";
+import { DWN_PROTO, DWN_PROTO_NAME, DwnProtoMessage, LocalDwnEndpoints, makeProtoCreateRecord } from "@web50/dwn_utils";
 import { Web5 } from "web50";
 import { config } from 'dotenv';
 
@@ -53,20 +53,20 @@ async function run_paris_dwn() {
     let msg: DwnProtoMessage = await claude_record.data.json();
 
     if (msg.collection.length == 2) {
-      msg.collection[0] = `Edited later by Paris.`;
+      msg.collection[0] = `Edited later by Paris at ${new Date().toUTCString()}`;
     } else {
-      msg.collection.push('New pushed data by Paris');
+      msg.collection.push(`New pushed data by Paris at ${new Date().toUTCString()}`);
     }
 
-    const { record } = await makeProtoUpdateRecord(web5, claude_record.id, msg, claude_did);
-    console.dir(record);
-
-    const res = await record?.send(claude_did);
-
+    const res = await claude_record.update({
+      data: msg,
+    });
     console.dir(res);
+
+    console.dir(await claude_record?.send(claude_did));
   } else {
     const data: DwnProtoMessage = {
-      collection: ['New record by Paris'],
+      collection: [`New record by Paris at ${new Date().toUTCString()}`],
     };
 
     const { record } = await makeProtoCreateRecord(web5, data, claude_did);
@@ -74,7 +74,6 @@ async function run_paris_dwn() {
 
     console.dir(res);
   }
-
 }
 
 run_paris_dwn().catch(console.error);
