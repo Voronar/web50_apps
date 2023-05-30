@@ -1,0 +1,8 @@
+node_modules/
+tsconfig.tsbuildinfo
+dist
+data
+DATASTORE
+EVENTLOG
+INDEX
+MESSAGESTORE

@@ -1,0 +1,19 @@
+{
+  "name": "@web50/claude_dwn",
+  "version": "0.1.0",
+  "description": "Claude's DWN",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "scripts": {
+    "build": "tsc --build",
+    "start": "node dist/main.js"
+  },
+  "author": "developer",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@web50/dwn_utils": "*",
+    "web50": "file://../../../web5-js/packages/web5"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,6 @@
+[submodule "libs/web5-js"]
+	path = libs/web5-js
+	url = https://github.com/TBD54566975/web5-js
+[submodule "libs/dwn-server"]
+	path = libs/dwn-server
+	url = https://github.com/TBD54566975/dwn-server

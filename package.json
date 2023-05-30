@@ -1,0 +1,25 @@
+{
+  "name": "web50_dwn",
+  "private": true,
+  "version": "0.1.0",
+  "description": "DWN",
+  "scripts": {
+    "build": "tsc --build",
+    "start_dennis_dwn": "npm run build && npm run start -w @web50/dennis_dwn",
+    "start_claude_dwn": "npm run build && npm run start -w @web50/claude_dwn",
+    "start_multi_tenant_dwn": "cd ../dwn-server && npm run server"
+  },
+  "keywords": [
+    "dwn"
+  ],
+  "author": "developer",
+  "license": "Apache-2.0",
+  "workspaces": [
+    "packages/dwn_utils",
+    "packages/dennis_dwn",
+    "packages/claude_dwn"
+  ],
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
