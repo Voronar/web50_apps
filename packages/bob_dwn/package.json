@@ -1,7 +1,7 @@
 {
-  "name": "@web50/claude_dwn",
+  "name": "@web50/bob_dwn",
   "version": "0.1.0",
-  "description": "Claude's DWN",
+  "description": "bob's DWN",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",

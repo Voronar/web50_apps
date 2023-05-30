@@ -6,10 +6,10 @@ config({
   path: '../../.env',
 });
 
-// See the actual one in Claude's DWN console output and change it in .env
-const claude_did = process.env.CLAUDE_DID ?? '';
+// See the actual one in bob's DWN console output and change it in .env
+const bob_did = process.env.BOB_DID ?? '';
 
-async function run_paris_dwn() {
+async function run_alice_dwn() {
   const { web5 } = await Web5.connect({
     techPreview: {
       dwnEndpoints: LocalDwnEndpoints,
@@ -37,8 +37,8 @@ async function run_paris_dwn() {
     console.dir(proto);
   }
 
-  const claude_data = await web5.dwn.records.query({
-    from: claude_did,
+  const bob_data = await web5.dwn.records.query({
+    from: bob_did,
     message: {
       filter: {
         protocol: DWN_PROTO_NAME,
@@ -46,34 +46,34 @@ async function run_paris_dwn() {
     },
   });
 
-  const [claude_record] = claude_data?.records ?? [undefined];
+  const [bob_record] = bob_data?.records ?? [undefined];
 
-  if (claude_record) {
-    console.log(`Updating record: ${claude_record.id}`);
-    let msg: DwnProtoMessage = await claude_record.data.json();
+  if (bob_record) {
+    console.log(`Updating record: ${bob_record.id}`);
+    let msg: DwnProtoMessage = await bob_record.data.json();
 
     if (msg.collection.length == 2) {
-      msg.collection[0] = `Edited later by Paris at ${new Date().toUTCString()}`;
+      msg.collection[0] = `Edited later by Alice at ${new Date().toUTCString()}`;
     } else {
-      msg.collection.push(`New pushed data by Paris at ${new Date().toUTCString()}`);
+      msg.collection.push(`New pushed data by Alice at ${new Date().toUTCString()}`);
     }
 
-    const res = await claude_record.update({
+    const res = await bob_record.update({
       data: msg,
     });
     console.dir(res);
 
-    console.dir(await claude_record?.send(claude_did));
+    console.dir(await bob_record?.send(bob_did));
   } else {
     const data: DwnProtoMessage = {
-      collection: [`New record by Paris at ${new Date().toUTCString()}`],
+      collection: [`New record by Alice at ${new Date().toUTCString()}`],
     };
 
-    const { record } = await makeProtoCreateRecord(web5, data, claude_did);
-    const res = await record?.send(claude_did);
+    const { record } = await makeProtoCreateRecord(web5, data, bob_did);
+    const res = await record?.send(bob_did);
 
     console.dir(res);
   }
 }
 
-run_paris_dwn().catch(console.error);
+run_alice_dwn().catch(console.error);

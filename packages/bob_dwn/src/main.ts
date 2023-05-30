@@ -1,7 +1,7 @@
 import { DWN_PROTO, DWN_PROTO_NAME, DwnProtoMessage, LocalDwnEndpoints } from "@web50/dwn_utils";
 import { Web5 } from "web50";
 
-async function run_claude_dwn() {
+async function run_bob_dwn() {
   const { web5, did: profileDid } = await Web5.connect({
     techPreview: {
       dwnEndpoints: LocalDwnEndpoints,
@@ -48,4 +48,4 @@ async function run_claude_dwn() {
 
 }
 
-run_claude_dwn().catch(console.error);
+run_bob_dwn().catch(console.error);

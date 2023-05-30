@@ -5,11 +5,11 @@
   "description": "DWN",
   "scripts": {
     "build": "tsc --build",
-    "start_paris_dwn": "npm run build && npm run start -w @web50/paris_dwn",
-    "start_claude_dwn": "npm run build && npm run start -w @web50/claude_dwn",
-    "clean_claude_dwn": "rm -rf packages/claude_dwn/data packages/claude_dwn/DATASTORE packages/claude_dwn/INDEX packages/claude_dwn/EVENTLOG packages/claude_dwn/MESSAGESTORE",
-    "clean_paris_dwn": "rm -rf packages/paris_dwn/data packages/paris_dwn/DATASTORE packages/paris_dwn/INDEX packages/paris_dwn/EVENTLOG packages/paris_dwn/MESSAGESTORE",
-    "clean_dwns": "npm run clean_claude_dwn && npm run clean_paris_dwn",
+    "start_alice_dwn": "npm run build && npm run start -w @web50/alice_dwn",
+    "start_bob_dwn": "npm run build && npm run start -w @web50/bob_dwn",
+    "clean_bob_dwn": "rm -rf packages/bob_dwn/data packages/bob_dwn/DATASTORE packages/bob_dwn/INDEX packages/bob_dwn/EVENTLOG packages/bob_dwn/MESSAGESTORE",
+    "clean_alice_dwn": "rm -rf packages/alice_dwn/data packages/alice_dwn/DATASTORE packages/alice_dwn/INDEX packages/alice_dwn/EVENTLOG packages/alice_dwn/MESSAGESTORE",
+    "clean_dwns": "npm run clean_bob_dwn && npm run clean_alice_dwn",
     "start_multi_tenant_dwn": "cd ../dwn-server && npm run server"
   },
   "keywords": [
@@ -19,8 +19,8 @@
   "license": "Apache-2.0",
   "workspaces": [
     "packages/dwn_utils",
-    "packages/paris_dwn",
-    "packages/claude_dwn"
+    "packages/alice_dwn",
+    "packages/bob_dwn"
   ],
   "devDependencies": {
     "typescript": "^5.0.4"
