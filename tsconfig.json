@@ -2,7 +2,7 @@
   "files": [],
   "references": [
     { "path": "packages/dwn_utils" },
-    { "path": "packages/dennis_dwn" },
+    { "path": "packages/paris_dwn" },
     { "path": "packages/claude_dwn" },
   ]
 }

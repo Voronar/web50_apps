@@ -12,8 +12,7 @@
   "author": "developer",
   "license": "Apache-2.0",
   "dependencies": {
-    "@web50/dwn_utils": "*",
-    "web50": "file://../../../web5-js/packages/web5"
+    "@web50/dwn_utils": "*"
   },
   "devDependencies": {}
 }

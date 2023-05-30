@@ -5,8 +5,11 @@
   "description": "DWN",
   "scripts": {
     "build": "tsc --build",
-    "start_dennis_dwn": "npm run build && npm run start -w @web50/dennis_dwn",
+    "start_paris_dwn": "npm run build && npm run start -w @web50/paris_dwn",
     "start_claude_dwn": "npm run build && npm run start -w @web50/claude_dwn",
+    "clean_claude_dwn": "rm -rf packages/claude_dwn/data packages/claude_dwn/DATASTORE packages/claude_dwn/INDEX packages/claude_dwn/EVENTLOG packages/claude_dwn/MESSAGESTORE",
+    "clean_paris_dwn": "rm -rf packages/paris_dwn/data packages/paris_dwn/DATASTORE packages/paris_dwn/INDEX packages/paris_dwn/EVENTLOG packages/paris_dwn/MESSAGESTORE",
+    "clean_dwns": "npm run clean_claude_dwn && npm run clean_paris_dwn",
     "start_multi_tenant_dwn": "cd ../dwn-server && npm run server"
   },
   "keywords": [
@@ -16,10 +19,14 @@
   "license": "Apache-2.0",
   "workspaces": [
     "packages/dwn_utils",
-    "packages/dennis_dwn",
+    "packages/paris_dwn",
     "packages/claude_dwn"
   ],
   "devDependencies": {
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "web50": "file://./libs/web5-js/packages/web5"
   }
 }
